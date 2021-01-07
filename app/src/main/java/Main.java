@@ -6,5 +6,7 @@ public class Main {
         
         GameMaster Oda = new GameMaster();//Odaさんを召喚！
         
+        //確認用
+        Oda.playerTurn();
     }
 }

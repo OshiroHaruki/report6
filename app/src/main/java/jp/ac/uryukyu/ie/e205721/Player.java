@@ -20,4 +20,8 @@ public class Player {
         return selectedNumber;
     }
     //コールするメソッド
+    public void call(){
+        isEndTurn = true;
+    }
+    
 }
