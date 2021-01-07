@@ -1,5 +1,6 @@
 package jp.ac.uryukyu.ie.e205721;
 import java.util.ArrayList;
+import java.util.Random;
 public class CardManagement{
     //山札のリスト(あとで要素を削除したりするのでArrayList)
     public ArrayList<String> deck = new ArrayList<String>();
@@ -23,5 +24,16 @@ public class CardManagement{
                 deck.add("K");
             }
         }
+    }
+
+    //カードを引くメソッド
+    public String drawCard(){
+        String drawedCard = "";
+        Random randomInt = new Random();
+        int numOfDecks = deck.size();//山札の枚数
+        int randomValue = randomInt.nextInt(numOfDecks);//引くカードをランダムに決定
+        drawedCard = deck.get(randomValue);//引いたカードを変数に代入
+        deck.remove(randomValue);//引いたカードは山札から削除
+        return drawedCard;
     }
 }

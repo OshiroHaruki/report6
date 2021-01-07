@@ -5,6 +5,6 @@ public class Main {
         System.out.println("Let's Play Game!");
         
         GameMaster Oda = new GameMaster();//Odaさんを召喚！
-        Oda.prepareDeck();//Odaさんがデッキを用意してくれた！
+        
     }
 }
