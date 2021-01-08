@@ -20,15 +20,18 @@ public class GameMaster{
     //プレイヤーターンに行うメソッド
     public void playerTurn(){
         System.out.println("あなたのターン");
-        int selectNumber = player.selectAction();
-        if(selectNumber == 0){
-            player.addCard(deck.drawCard());
-        }
-        else if(selectNumber == 1){
-            player.call();
+        while(!player.getIsEndTurn()){//isEndTurnがfalseの間繰り返す
+            System.out.println("あなたの手札: " + player.haveCard);
+            int selectNumber = player.selectAction();
+            if(selectNumber == 0){
+                player.addCard(deck.drawCard());
+            }
+            else if(selectNumber == 1){
+                player.call();
+            }
         }
 
-        System.out.println(player.haveCard);
+        
     }
     //ディーラーターンに行うメソッド
     //勝利判定を行うメソッド

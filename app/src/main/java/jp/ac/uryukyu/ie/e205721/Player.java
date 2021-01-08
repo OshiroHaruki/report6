@@ -23,5 +23,10 @@ public class Player {
     public void call(){
         isEndTurn = true;
     }
+
+    //isEndTurnの値を返すgetterメソッド
+    public boolean getIsEndTurn(){
+        return isEndTurn;
+    }
     
 }
