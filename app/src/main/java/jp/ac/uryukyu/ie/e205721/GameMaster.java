@@ -62,10 +62,11 @@ public class GameMaster{
         System.out.println("ディーラーの点数: " + dealerPoint);
     }
     //勝利判定を行うメソッド
-    //21を超えた時に行うメソッド
+    public void judgeWin(){
+        gameRuleJudge.judgeWhichNear(player, dealer);
+    }
 
-
-    //実験用コード
+    //山札を用意するメソッド
     public void prepareDeck(){
         deck = new CardManagement();
         deck.Shahhuru();

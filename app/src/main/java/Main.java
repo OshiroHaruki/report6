@@ -9,5 +9,6 @@ public class Main {
         //確認用
         Oda.playerTurn();
         Oda.dealerTurn();
+        Oda.judgeWin();
     }
 }
