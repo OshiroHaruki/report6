@@ -15,6 +15,6 @@ public class Dealer extends Character{
      * すべてのカードを公開するメソッド
      */
     public void showAllCard(){
-        System.out.println(getHaveCard());
+        System.out.println("ディーラーのカード" + getHaveCard());
     }
 }

@@ -17,7 +17,8 @@ public class Main {
         }
         catch (NoSuchElementException e){
             System.out.println("error: NoSuchElementException");
-            System.out.println(e.getMessage());
+            System.out.println("半角で'0'か'1'を入力してください!");
+            //System.out.println(e.getMessage());
         } 
     }
 }

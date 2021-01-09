@@ -6,6 +6,7 @@ package jp.ac.uryukyu.ie.e205721;
  * CardManagement; カードマネジメントのインスタンス
  * GameRuleJudge; ゲームルールジャッジのインスタンス
  * boolean isBurstPlayer; プレイヤーがバーストしたかどうか. true=バースト、false=バーストしてない
+ * boolean isBurstDealer; ディーラーがバーストしたかどうか. true=バースト、false=バーストしてない
  */
 public class GameMaster{
     private Player player = new Player();
@@ -13,6 +14,7 @@ public class GameMaster{
     private CardManagement deck = new CardManagement();
     private GameRuleJudge gameRuleJudge = new GameRuleJudge();
     private boolean isBurstPlayer = false;
+    private boolean isBurstDealer = false;
     /**コンストラクタ.山札を用意して、初期手札を配る
      * 
     */
@@ -32,7 +34,9 @@ public class GameMaster{
         playerTurn();
         if(!isBurstPlayer){
             dealerTurn();
-            judgeWin();
+            if(!isBurstDealer){
+                judgeWin();
+            }
         }
     }
     /**
@@ -63,6 +67,8 @@ public class GameMaster{
             }
             else if(selectNumber == 1){//スタンドを選択したとき
                 player.stand();
+                System.out.println("あなたの手札は"+ player.getHaveCard() + "で");
+                System.out.println("点数は"+ playerPoint + "です");
             }
         }
     }
@@ -72,7 +78,18 @@ public class GameMaster{
     public void dealerTurn(){
         dealer.showAllCard();
         int dealerPoint = gameRuleJudge.calcPoint(dealer.getHaveCard());
+        while(dealerPoint < 17){
+            System.out.println("ディーラーのカードの合計が17より小さいのでカードを引きます.");
+            dealer.addCard(deck.drawCard());
+            dealer.showAllCard();
+            dealerPoint = gameRuleJudge.calcPoint(dealer.getHaveCard());
+        }
         System.out.println("ディーラーの点数: " + dealerPoint);
+        if(gameRuleJudge.judgeBurst(dealerPoint)){
+            isBurstDealer = true;
+            System.out.println("ディーラーがバーストしました");
+            System.out.println("あなたの勝ちです！");
+        }
     }
     /**
      * 勝利判定を行うメソッド
