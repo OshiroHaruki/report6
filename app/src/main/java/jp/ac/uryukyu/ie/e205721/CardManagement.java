@@ -43,4 +43,11 @@ public class CardManagement{
         deck.remove(randomValue);
         return drawedCard;
     }
+    /**
+     * 山札を確認するメソッド
+     * @return deck 山札
+     */
+    public ArrayList<String> getDeck(){
+        return deck;
+    }
 }

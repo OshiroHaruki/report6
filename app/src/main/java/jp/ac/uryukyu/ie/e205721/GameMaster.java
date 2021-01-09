@@ -38,6 +38,7 @@ public class GameMaster{
     /**
      * プレイヤーターンに行うメソッド.
      * スタンドするまでカードを引ける
+     * バーストしたらその時点で負け
      */
     public void playerTurn(){
         int playerPoint = gameRuleJudge.calcPoint(player.getHaveCard());
