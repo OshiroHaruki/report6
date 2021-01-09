@@ -56,6 +56,11 @@ public class GameMaster{
         
     }
     //ディーラーターンに行うメソッド
+    public void dealerTurn(){
+        dealer.showAllCard();
+        int dealerPoint = gameRuleJudge.calcPoint(dealer.haveCard);
+        System.out.println("ディーラーの点数: " + dealerPoint);
+    }
     //勝利判定を行うメソッド
     //21を超えた時に行うメソッド
 

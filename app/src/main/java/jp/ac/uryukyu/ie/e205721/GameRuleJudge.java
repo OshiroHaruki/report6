@@ -27,4 +27,18 @@ public class GameRuleJudge{
         }
         return isBurst;
     }
+
+    public void judgeWhichNear(Player player, Dealer dealer){
+        int playerScore = JUDGE_NUMBER - calcPoint(player.haveCard);
+        int dealerScore = JUDGE_NUMBER - calcPoint(dealer.haveCard);
+        if(playerScore < dealerScore){
+            System.out.println("あなたの勝ちです！");
+        }
+        else if(dealerScore < playerScore){
+            System.out.println("YOU LOSE...");
+        }
+        else if(playerScore == dealerScore){
+            System.out.println("引き分け");
+        }
+    }
 }
