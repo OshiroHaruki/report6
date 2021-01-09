@@ -2,10 +2,9 @@ package jp.ac.uryukyu.ie.e205721;
 import java.util.ArrayList;
 import java.util.Random;
 public class CardManagement{
-    //山札のリスト(あとで要素を削除したりするのでArrayList)
     private ArrayList<String> deck = new ArrayList<String>();
     //山札を用意するメソッド
-    public void Shahhuru(){
+    public void shuffle(){
         for(int i = 1; i < 14; i++){
             if (i == 1){
                 deck.add("A");

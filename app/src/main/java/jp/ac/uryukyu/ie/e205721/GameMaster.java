@@ -1,65 +1,55 @@
 package jp.ac.uryukyu.ie.e205721;
 public class GameMaster{
-    //プレイヤーのインスタンス
-    Player player;
-    //ディーラーのインスタンス
-    Dealer dealer;
-    //山札のインスタンス
-    CardManagement deck;
-    //ゲームのルールのインスタンス
-    GameRuleJudge gameRuleJudge;
-    //途中でバーストしたかどうか
+    
+    private Player player = new Player();
+    private Dealer dealer = new Dealer();;
+    private CardManagement deck = new CardManagement();
+    private GameRuleJudge gameRuleJudge = new GameRuleJudge();
+    
     private boolean isBurstPlayer = false;
     //コンストラクタ
     public GameMaster(){
-        player = new Player();
-        prepareDeck();
-        player.addCard(deck.drawCard());
-        //山札からカードがちゃんとひけたか確認
-        //System.out.println(deck.deck);
-        System.out.println(player.getHaveCard());
-
-        //ゲームルールのインスタンス生成
-        gameRuleJudge = new GameRuleJudge();
-
-        //ディーラのインスタンス生成、最初にカードを２枚引かせる
-        dealer = new Dealer();
-        for(int i=0; i < 2; i++){
+        prepareDeck();//山札を用意
+        for(int i=0; i < 2; i++){//ディーラーにカードを二枚配る
             dealer.addCard(deck.drawCard());
         }
-        dealer.showCard();
+        player.addCard(deck.drawCard());//プレイヤーに一枚カードを配る
     }
     
     //ターン回しをするメソッド
     public void playGame(){
+        dealer.showCard();
         playerTurn();
         if(!isBurstPlayer){
             dealerTurn();
             judgeWin();
         }
     }
+
     //プレイヤーターンに行うメソッド
     public void playerTurn(){
         int playerPoint = gameRuleJudge.calcPoint(player.getHaveCard());
         System.out.println("あなたのターン");
         while(!player.getIsEndTurn()){//isEndTurnがfalseの間繰り返す
             System.out.println("あなたの手札: " + player.getHaveCard());
-            //手札をポイントに変換できているかのテスト
             System.out.println("あなたの点数: " + playerPoint);
+
             int selectNumber = player.selectAction();
-            if(selectNumber == 0){
+            if(selectNumber == 0){//カードを引くを選択したとき
                 player.addCard(deck.drawCard());
                 playerPoint = gameRuleJudge.calcPoint(player.getHaveCard());
-                if(gameRuleJudge.judgeBurst(playerPoint)){
-                    System.out.println(player.getHaveCard());
-                    System.out.println(playerPoint);
+
+                if(gameRuleJudge.judgeBurst(playerPoint)){//バースト
+                    System.out.println("あなたの手札: " + player.getHaveCard());
+                    System.out.println("あなたの点数: " + playerPoint);
+                    System.out.println("バーストです");
                     System.out.println("YOU LOSE...");
                     isBurstPlayer = true;
                     break;
                 }
             }
-            else if(selectNumber == 1){
-                player.call();
+            else if(selectNumber == 1){//スタンドを選択したとき
+                player.stand();
             }
         }
     }
@@ -76,9 +66,6 @@ public class GameMaster{
 
     //山札を用意するメソッド
     public void prepareDeck(){
-        deck = new CardManagement();
-        deck.Shahhuru();
-        //山札を用意できたか確認
-        //System.out.println(deck.deck);
+        deck.shuffle();
     }
 }

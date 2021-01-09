@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class GameRuleJudge{
     private int JUDGE_NUMBER = 21;
     private boolean isBurst = false;
-    //カードから、現在の合計数を出すメソッド(引数 ArrayList: HaveCard)
+    //持ち札から、現在の合計点数を出すメソッド
     public int calcPoint(ArrayList<String> haveCard){
         int havePoint = 0;
         for(var s : haveCard){
