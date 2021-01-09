@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Random;
 /**
  * 山札を管理するクラス.
- * ArrayList<String> deck; 山札
+ * ArrayList deck; 山札
  */
 public class CardManagement{
     private ArrayList<String> deck = new ArrayList<String>();

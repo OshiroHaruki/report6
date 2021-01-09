@@ -2,7 +2,7 @@ package jp.ac.uryukyu.ie.e205721;
 import java.util.ArrayList;
 /**
  * キャラクタークラス.
- * ArrayList<String> haveCard; //持ち札
+ * ArrayList haveCard; //持ち札
  */
 public class Character {
     private ArrayList<String> haveCard = new ArrayList<String>();

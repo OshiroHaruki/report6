@@ -1,8 +1,13 @@
 import java.util.NoSuchElementException;
 
 import jp.ac.uryukyu.ie.e205721.*;
-
+/**
+ * 実行のためのMainクラス.
+ */
 public class Main {
+    /**
+     * メインメソッド.
+     */
     public static void main(String[] args){
         try{
             System.out.println("Let's Play Game!");
