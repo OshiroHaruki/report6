@@ -5,7 +5,8 @@ public class GameMaster{
     //ディーラーのインスタンス
     //山札のインスタンス
     CardManagement deck;
-
+    //ゲームのルールのインスタンス
+    GameRuleJudge gameRuleJudge;
     //コンストラクタ
     public GameMaster(){
         player = new Player();
@@ -14,6 +15,9 @@ public class GameMaster{
         //山札からカードがちゃんとひけたか確認
         System.out.println(deck.deck);
         System.out.println(player.haveCard);
+
+        //ゲームルールのインスタンス生成
+        gameRuleJudge = new GameRuleJudge();
     }
     
     //ターン回しをするメソッド
@@ -22,6 +26,8 @@ public class GameMaster{
         System.out.println("あなたのターン");
         while(!player.getIsEndTurn()){//isEndTurnがfalseの間繰り返す
             System.out.println("あなたの手札: " + player.haveCard);
+            //手札をポイントに変換できているかのテスト
+            System.out.println("あなたの点数: " + gameRuleJudge.calcPoint(player.haveCard));
             int selectNumber = player.selectAction();
             if(selectNumber == 0){
                 player.addCard(deck.drawCard());
