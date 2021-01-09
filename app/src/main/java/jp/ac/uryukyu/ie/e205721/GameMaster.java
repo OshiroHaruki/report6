@@ -3,6 +3,7 @@ public class GameMaster{
     //プレイヤーのインスタンス
     Player player;
     //ディーラーのインスタンス
+    Dealer dealer;
     //山札のインスタンス
     CardManagement deck;
     //ゲームのルールのインスタンス
@@ -18,6 +19,13 @@ public class GameMaster{
 
         //ゲームルールのインスタンス生成
         gameRuleJudge = new GameRuleJudge();
+
+        //ディーラのインスタンス生成、最初にカードを２枚引かせる
+        dealer = new Dealer();
+        for(int i=0; i < 2; i++){
+            dealer.addCard(deck.drawCard());
+        }
+        dealer.showCard();
     }
     
     //ターン回しをするメソッド
