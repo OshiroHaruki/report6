@@ -11,21 +11,23 @@ public class CardManagement{
      * 山札を用意するメソッド.
      */
     public void shuffle(){
-        for(int i = 1; i < 14; i++){
-            if (i == 1){
-                deck.add("A");
-            }
-            else if (i < 11){
-                deck.add(Integer.toString(i));
-            }
-            else if (i == 11){
-                deck.add("J");
-            }
-            else if (i == 12){
-                deck.add("Q");
-            }
-            else if (i == 13){
-                deck.add("K");
+        for(int n = 0; n < 4; n++){
+            for(int i = 1; i < 14; i++){
+                if (i == 1){
+                    deck.add("A");
+                }
+                else if (i < 11){
+                    deck.add(Integer.toString(i));
+                }
+                else if (i == 11){
+                    deck.add("J");
+                }
+                else if (i == 12){
+                    deck.add("Q");
+                }
+                else if (i == 13){
+                    deck.add("K");
+                }
             }
         }
     }
