@@ -1,11 +1,20 @@
 package jp.ac.uryukyu.ie.e205721;
 import java.util.ArrayList;
-
-public class Dealer extends Charactor{
-    public void showCard(){//haveCardの内1枚公開するメソッド
+/**
+ * ディーラークラス.
+ * Characterクラスを継承
+ */
+public class Dealer extends Character{
+    /**
+     * haveCardの内1枚だけ公開するメソッド
+     */
+    public void showCard(){
         System.out.println("ディーラーのカード:" + getHaveCard().get(0) + ",■");
     }
-    public void showAllCard(){//すべてのカードを公開するメソッド
+    /**
+     * すべてのカードを公開するメソッド
+     */
+    public void showAllCard(){
         System.out.println(getHaveCard());
     }
 }

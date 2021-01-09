@@ -1,13 +1,21 @@
 package jp.ac.uryukyu.ie.e205721;
+/**
+ * ゲームの進行等を行うクラス.
+ * Player player; プレイヤーのインスタンス
+ * Dealer dealer; ディーラーのインスタンス
+ * CardManagement; カードマネジメントのインスタンス
+ * GameRuleJudge; ゲームルールジャッジのインスタンス
+ * boolean isBurstPlayer; プレイヤーがバーストしたかどうか. true=バースト、false=バーストしてない
+ */
 public class GameMaster{
-    
     private Player player = new Player();
     private Dealer dealer = new Dealer();;
     private CardManagement deck = new CardManagement();
     private GameRuleJudge gameRuleJudge = new GameRuleJudge();
-    
     private boolean isBurstPlayer = false;
-    //コンストラクタ
+    /**コンストラクタ.山札を用意して、初期手札を配る
+     * 
+    */
     public GameMaster(){
         prepareDeck();//山札を用意
         for(int i=0; i < 2; i++){//ディーラーにカードを二枚配る
@@ -16,7 +24,9 @@ public class GameMaster{
         player.addCard(deck.drawCard());//プレイヤーに一枚カードを配る
     }
     
-    //ターン回しをするメソッド
+    /**
+     * ターン回しをするメソッド.
+     */
     public void playGame(){
         dealer.showCard();
         playerTurn();
@@ -25,8 +35,10 @@ public class GameMaster{
             judgeWin();
         }
     }
-
-    //プレイヤーターンに行うメソッド
+    /**
+     * プレイヤーターンに行うメソッド.
+     * スタンドするまでカードを引ける
+     */
     public void playerTurn(){
         int playerPoint = gameRuleJudge.calcPoint(player.getHaveCard());
         System.out.println("あなたのターン");
@@ -53,18 +65,23 @@ public class GameMaster{
             }
         }
     }
-    //ディーラーターンに行うメソッド
+    /**
+     * ディーラーターンに行うメソッド
+     */
     public void dealerTurn(){
         dealer.showAllCard();
         int dealerPoint = gameRuleJudge.calcPoint(dealer.getHaveCard());
         System.out.println("ディーラーの点数: " + dealerPoint);
     }
-    //勝利判定を行うメソッド
+    /**
+     * 勝利判定を行うメソッド
+     */
     public void judgeWin(){
         gameRuleJudge.judgeWhichNear(player, dealer);
     }
-
-    //山札を用意するメソッド
+    /**
+     * 山札を用意するメソッド
+     */
     public void prepareDeck(){
         deck.shuffle();
     }

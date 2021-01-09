@@ -1,9 +1,15 @@
 package jp.ac.uryukyu.ie.e205721;
 import java.util.ArrayList;
 import java.util.Random;
+/**
+ * 山札を管理するクラス.
+ * ArrayList<String> deck; 山札
+ */
 public class CardManagement{
     private ArrayList<String> deck = new ArrayList<String>();
-    //山札を用意するメソッド
+    /**
+     * 山札を用意するメソッド.
+     */
     public void shuffle(){
         for(int i = 1; i < 14; i++){
             if (i == 1){
@@ -23,14 +29,18 @@ public class CardManagement{
             }
         }
     }
-    //カードを引くメソッド
+    /**
+     * カードを引くメソッド.
+     * 引いたカードは山札から削除
+     * @return drawedCard 引いたカード
+     */
     public String drawCard(){
         String drawedCard = "";
         Random randomInt = new Random();
-        int numOfDecks = deck.size();//山札の枚数
-        int randomValue = randomInt.nextInt(numOfDecks);//引くカードをランダムに決定
-        drawedCard = deck.get(randomValue);//引いたカードを変数に代入
-        deck.remove(randomValue);//引いたカードは山札から削除
+        int numOfDecks = deck.size();
+        int randomValue = randomInt.nextInt(numOfDecks);
+        drawedCard = deck.get(randomValue);
+        deck.remove(randomValue);
         return drawedCard;
     }
 }
