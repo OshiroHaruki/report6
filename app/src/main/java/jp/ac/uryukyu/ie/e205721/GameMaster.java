@@ -16,8 +16,8 @@ public class GameMaster{
         prepareDeck();
         player.addCard(deck.drawCard());
         //山札からカードがちゃんとひけたか確認
-        System.out.println(deck.deck);
-        System.out.println(player.haveCard);
+        //System.out.println(deck.deck);
+        System.out.println(player.getHaveCard());
 
         //ゲームルールのインスタンス生成
         gameRuleJudge = new GameRuleJudge();
@@ -40,18 +40,18 @@ public class GameMaster{
     }
     //プレイヤーターンに行うメソッド
     public void playerTurn(){
-        int playerPoint = gameRuleJudge.calcPoint(player.haveCard);
+        int playerPoint = gameRuleJudge.calcPoint(player.getHaveCard());
         System.out.println("あなたのターン");
         while(!player.getIsEndTurn()){//isEndTurnがfalseの間繰り返す
-            System.out.println("あなたの手札: " + player.haveCard);
+            System.out.println("あなたの手札: " + player.getHaveCard());
             //手札をポイントに変換できているかのテスト
             System.out.println("あなたの点数: " + playerPoint);
             int selectNumber = player.selectAction();
             if(selectNumber == 0){
                 player.addCard(deck.drawCard());
-                playerPoint = gameRuleJudge.calcPoint(player.haveCard);
+                playerPoint = gameRuleJudge.calcPoint(player.getHaveCard());
                 if(gameRuleJudge.judgeBurst(playerPoint)){
-                    System.out.println(player.haveCard);
+                    System.out.println(player.getHaveCard());
                     System.out.println(playerPoint);
                     System.out.println("YOU LOSE...");
                     isBurstPlayer = true;
@@ -66,7 +66,7 @@ public class GameMaster{
     //ディーラーターンに行うメソッド
     public void dealerTurn(){
         dealer.showAllCard();
-        int dealerPoint = gameRuleJudge.calcPoint(dealer.haveCard);
+        int dealerPoint = gameRuleJudge.calcPoint(dealer.getHaveCard());
         System.out.println("ディーラーの点数: " + dealerPoint);
     }
     //勝利判定を行うメソッド
@@ -79,6 +79,6 @@ public class GameMaster{
         deck = new CardManagement();
         deck.Shahhuru();
         //山札を用意できたか確認
-        System.out.println(deck.deck);
+        //System.out.println(deck.deck);
     }
 }

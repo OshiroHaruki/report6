@@ -3,8 +3,7 @@ import java.util.ArrayList;
 import java.util.Random;
 public class CardManagement{
     //山札のリスト(あとで要素を削除したりするのでArrayList)
-    public ArrayList<String> deck = new ArrayList<String>();
-    //山札からカードを引くメソッド
+    private ArrayList<String> deck = new ArrayList<String>();
     //山札を用意するメソッド
     public void Shahhuru(){
         for(int i = 1; i < 14; i++){
@@ -25,7 +24,6 @@ public class CardManagement{
             }
         }
     }
-
     //カードを引くメソッド
     public String drawCard(){
         String drawedCard = "";

@@ -4,13 +4,7 @@ public class Main {
     public static void main(String[] args){
         System.out.println("Let's Play Game!");
         
-        GameMaster Oda = new GameMaster();//Odaさんを召喚！
-        
-        //確認用
-        //Oda.playerTurn();
-        //Oda.dealerTurn();
-        //Oda.judgeWin();
-
-        Oda.playGame();
+        GameMaster Oshiro = new GameMaster();//GameMasterを召喚
+        Oshiro.playGame();
     }
 }
