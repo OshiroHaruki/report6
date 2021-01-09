@@ -8,6 +8,8 @@ public class GameMaster{
     CardManagement deck;
     //ゲームのルールのインスタンス
     GameRuleJudge gameRuleJudge;
+    //途中でバーストしたかどうか
+    private boolean isBurstPlayer = false;
     //コンストラクタ
     public GameMaster(){
         player = new Player();
@@ -29,6 +31,13 @@ public class GameMaster{
     }
     
     //ターン回しをするメソッド
+    public void playGame(){
+        playerTurn();
+        if(!isBurstPlayer){
+            dealerTurn();
+            judgeWin();
+        }
+    }
     //プレイヤーターンに行うメソッド
     public void playerTurn(){
         int playerPoint = gameRuleJudge.calcPoint(player.haveCard);
@@ -45,6 +54,7 @@ public class GameMaster{
                     System.out.println(player.haveCard);
                     System.out.println(playerPoint);
                     System.out.println("YOU LOSE...");
+                    isBurstPlayer = true;
                     break;
                 }
             }
@@ -52,8 +62,6 @@ public class GameMaster{
                 player.call();
             }
         }
-
-        
     }
     //ディーラーターンに行うメソッド
     public void dealerTurn(){

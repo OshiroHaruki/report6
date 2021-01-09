@@ -7,8 +7,10 @@ public class Main {
         GameMaster Oda = new GameMaster();//Odaさんを召喚！
         
         //確認用
-        Oda.playerTurn();
-        Oda.dealerTurn();
-        Oda.judgeWin();
+        //Oda.playerTurn();
+        //Oda.dealerTurn();
+        //Oda.judgeWin();
+
+        Oda.playGame();
     }
 }
